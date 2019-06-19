@@ -10,7 +10,8 @@ import os
 from datetime import timedelta
 import pyodbc
 
-t = dt.datetime.now().date() - timedelta(days = 4)
+t = dt.datetime.now().date()
+
 print (t)
 
 data_path = r'S:\Contracts\Research and IT\08 - MWBE\DAS Only\09 - Python and R Scripts\LL1 PROG\PRODUCTION\Datasets'
@@ -114,7 +115,7 @@ EBE_Subs = EBE_Subs[EBE_Subs['SubVendorNumber'].isnull() == False]
 
 path = r'S:\Contracts\Research and IT\08 - MWBE\DAS Only\09 - Python and R Scripts\LL1ProgFY19Q3\EBE LBE SBS'
 
-writer = pd.ExcelWriter(path + '\\' + r'LBE EBE JV FY%s %s_%s_2.xlsx' % (str(FY)[2:4],FQ, str(t)), engine = 'xlsxwriter')
+writer = pd.ExcelWriter(path + '\\' + r'LBE EBE JV FY%s %s_%s.xlsx' % (str(FY)[2:4],FQ, str(t)), engine = 'xlsxwriter')
 
 workbook = writer.book
 worksheet = workbook.add_worksheet('1. FY%s %s EBE and LBE' % (str(FY)[2:4],FQ))
