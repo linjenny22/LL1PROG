@@ -57,10 +57,6 @@ path = r'S:\Contracts\Research and IT\08 - MWBE\DAS Only\09 - Python and R Scrip
 df = pq.read_table(path +'\\'+'open_contracts_%s.parquet' % (str(t))).to_pandas()
 
 df.columns = ['Agency', 'DOC_CD','DOC_DEPT_CD','DOC_ID','ContractID','EPIN','ContractValue','MWBE_LL','Method', 'VendorTIN','VendorNumber','VendorName','Purpose','StartDate','EndDate','RegistrationDate','Industry','ExcludeAll','ExcludeCategory','STATE_FED_FUNDED','MWBE72Fed','MWBE_GOALS', 'NoTSPReason', 'Base_EPIN', 'TSP','Goal_Black','Goal_Asian', 'Goal_Hispanic', 'Goal_Woman', 'Goal_Unspecified']
-#
-# df = pd.read_csv(r'S:\Contracts\Research and IT\08 - MWBE\DAS Only\09 - Python and R Scripts\LL1 PROG\Open Contracts Localized\open_contracts%s_%s.txt' % (str(FY)[2:4], str(t)), low_memory = False)
-#
-# df.columns = ['Agency', 'DOC_CD','DOC_DEPT_CD','DOC_ID','ContractID','EPIN','ContractValue','MWBE_LL','Method', 'VendorTIN','VendorNumber','VendorName','Purpose','StartDate','EndDate','RegistrationDate','Industry','ExcludeAll','ExcludeCategory','STATE_FED_FUNDED','MWBE72Fed','MWBE_GOALS', 'NoTSPReason', 'Base_EPIN', 'TSP','Goal_Black','Goal_Asian', 'Goal_Hispanic', 'Goal_Woman', 'Goal_Unspecified']
 
 df = df[~df['Agency'].isin(['DOE','City Hall'])]
 df = df[df['Method'].isin(["Accelerated","Competitive Sealed Bid","Demonstration Project","Innovative","Micro Purchase","Negotiated Acquisition","Negotiated Acquisition Extension","Renewal","Request for Proposal","Small Purchase","Micropurchase", "MWBE 72"])]
@@ -275,8 +271,8 @@ nypd = nypd.drop_duplicates()
 
 del df['DOC_DEPT_CD'] #vital
 
-df['RegistrationDate'] = df['RegistrationDate'].dt.date
-df['RegistrationDate'] = df['RegistrationDate'].astype(str)
+df.loc[:,'RegistrationDate'] = df['RegistrationDate'].dt.date
+df.loc[:,'RegistrationDate'] = df['RegistrationDate'].astype(str)
 
 df = df[df['Agency']!='OMB']
 
