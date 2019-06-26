@@ -1479,7 +1479,6 @@ if __name__ == "__main__":
      sw = subs
 
      sw['SubIndustry2'] = subs['Industry']
-     # sub_util['SubIndustry2'] = subs
      sw['Agency'] = agency(sw['Agency'])
      pw['Agency'] = agency(pw['Agency'])
 
@@ -5837,13 +5836,13 @@ if __name__ == '__main__':
     df = df.drop_duplicates(['ContractID', 'Base_EPIN'])
 
     def basis_for_deter(row):
-        if row['req_cont_for_goods_services'] in (1.,0.):
+        if row['req_cont_for_goods_services'] in (1.,):
             return "Requirement Contract"
-        elif row['srvc_const_occ_multi_site'] in (1.,0.):
+        elif row['srvc_const_occ_multi_site'] in (1.,):
             return "Multiple Site"
-        elif row['sin_indiv_pro_service_proj'] in (1.,0):
+        elif row['sin_indiv_pro_service_proj'] in (1.,):
             return "Single Indivisible Project"
-        elif row['cont_ref_uniq_unusual_goods'] in (1.,0.):
+        elif row['cont_ref_uniq_unusual_goods'] in (1.,):
             return "Unique/Unusual Good or Service"
         elif row['Industry'] == 'Human Services':
             return 'Human Services'
